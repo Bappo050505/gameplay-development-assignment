@@ -1,0 +1,22 @@
+﻿  enemy.cpp
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(26,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(26,11): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(52,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(116,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(116,14): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(130,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(132,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(139,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(140,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(142,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(147,34): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(147,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(147,57): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(147,57): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(158,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(159,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(161,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\Game\enemy.cpp(161,15): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  tower.cpp
+  Generating Code...
+  Game.vcxproj -> C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak (2) 2\gameplay development project - jakub szymoniak\x64\Debug\Game.exe
