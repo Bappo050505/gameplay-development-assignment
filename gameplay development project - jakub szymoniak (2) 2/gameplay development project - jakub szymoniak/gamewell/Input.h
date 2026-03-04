@@ -45,7 +45,7 @@ public:
 	bool GetMouseUp(int buttonId);
 
 	// Gets the pixel location of the mouse on screen.
-	void GetMousePos(int& x, int& y);
+	void GetMousePos(float& x, float& y);
 
 	// Gets the time between this frame and the previous one in seconds
 	float GetDeltaTime();

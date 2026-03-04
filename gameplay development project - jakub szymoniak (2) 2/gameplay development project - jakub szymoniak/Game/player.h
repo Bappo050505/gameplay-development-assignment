@@ -29,15 +29,11 @@ protected:
 	Input* m_inputManager;
 
 public:
-	player(PlayerConfig pConfig);
+	player(PlayerConfig pConfig);	
 	virtual void Update() override;
 	void Init() override;
-	float GetDamage() override;
+	void BasicAttack(float mouseX , float mouseY) override;
 	
-	float GetCurrentHealth() override;
-	
-	std::vector<Object*> BasicAttack() override;
-	int getmove(int move, int dist);
 	void Move() override;
 };
 

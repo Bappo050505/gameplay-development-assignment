@@ -2,6 +2,7 @@
 #include "enemy.h"
 #include "player.h"
 #include "tower.h"
+#include "Projectile.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -51,6 +52,7 @@ void Game::ReadFile()
 		//player
 		if (type == "player")
 		{
+			
 			SpawnPlayer(iss);
 		}
 		//enemy
@@ -73,7 +75,7 @@ void Game::SpawnPlayer(std::istringstream& iss)
 {
 	PlayerConfig pConfig;
 
-	iss >> pConfig.m_filepath >> pConfig.m_level >> pConfig.m_spawnX >> pConfig.m_spawnY >> pConfig.m_maxHealth >> pConfig.m_healthRegen >> pConfig.m_damage >> pConfig.m_mana
+	iss >>  pConfig.m_filepath >> pConfig.m_level >> pConfig.m_spawnX >> pConfig.m_spawnY >> pConfig.m_maxHealth >> pConfig.m_healthRegen >> pConfig.m_damage >> pConfig.m_mana
 		>> pConfig.m_manaRegen >> pConfig.m_speed >> pConfig.m_range >> pConfig.m_cooldown;
 
 	pConfig.m_imageFile = pConfig.m_filepath.c_str();
@@ -100,7 +102,7 @@ void Game::SpawnTower(std::istringstream& iss)
 {
 	TowerConfig tConfig;
 
-	iss >> tConfig.m_filepath >> tConfig.m_spawnX >> tConfig.m_spawnY >> tConfig.m_maxHealth >> tConfig.m_damage >> tConfig.m_range >> tConfig.m_cooldown;
+	iss >>  tConfig.m_filepath >> tConfig.m_spawnX >> tConfig.m_spawnY >> tConfig.m_maxHealth >> tConfig.m_damage >> tConfig.m_range >> tConfig.m_cooldown;
 
 	tConfig.m_imageFile = tConfig.m_filepath.c_str();
 
@@ -123,11 +125,13 @@ void Game::Update()
 	
 	if (m_InputManager->GetMouseDown(LEFTMOUSEBUTTON))
 	{
-		m_entities[m_playerIDX]->BasicAttack();
+		m_InputManager->GetMousePos(clickX, clickY);
+
+		m_entities[m_playerIDX]->BasicAttack(clickX, clickY);
 	}
 
 	CheckCollisions();
-	m_entities[m_playerIDX]->Move();
+	//m_entities[m_playerIDX]->Move();
 
 	UpdatingObjectUpdate();
 
@@ -158,15 +162,13 @@ void Game::Render()
 		stop();
 	}
 	 
-	
 	gameS->Update();
 	
-	
-
 }
 
 void Game::CheckCollisions()
 {
+	
 	//collisions with enemies
 	for (entity* e : m_entities)
 	{
@@ -188,23 +190,13 @@ void Game::CheckCollisions()
 		}
 
 	}
-	for (Object* p : m_entities[m_playerIDX]->getProjectiles()) 
+	//projectil collisions
+	
+	for (entity* e : m_entities) 
 	{
-		for (entity* e : m_entities)
-		{
-			if (p->IsOverlapping(*e) && e != m_entities[m_playerIDX])
-			{
-				std::cout << "collided" << std::endl;
-
-				p->SetShouldCollide(false);
-				p->SetShouldDraw(false);
-				
-				m_entities[m_mainEnemyIDX]->TakeDamage(m_entities[m_playerIDX]->GetDamage());
-				
-			}
-		
-		}
+		CheckProjectileCollision(e);
 	}
+	
 }
 	
 
@@ -221,6 +213,27 @@ void Game::UpdatingObjectUpdate()
 
 	m_entities[m_mainEnemyIDX]->GetPosition(e_x, e_y);
 	m_entities[m_mainEnemyIDX]->GetHealthObj()->SetPosition(e_x , e_y -20);
+}
+
+//checks collisions between entity projetciles (owner of projectile against target)
+void Game::CheckProjectileCollision(entity* ProjectileOwner)
+{
+	for (Object* p : ProjectileOwner->getProjectiles())
+	{
+		for (entity* e : m_entities)
+		{
+			if (p->IsOverlapping(*e) && e != ProjectileOwner)
+			{
+				std::cout << "collided" << std::endl;
+
+				p->SetShouldCollide(false);
+				p->SetShouldDraw(false);
+
+				e->TakeDamage(ProjectileOwner->GetDamage());
+
+			}
+		}
+	}
 }
 
 

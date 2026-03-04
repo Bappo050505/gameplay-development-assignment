@@ -139,7 +139,7 @@ bool InputManager::GetMouseUp(int buttonId)
 	return m_mouseButtons[buttonId] == -1;
 }
 
-void InputManager::GetMousePos(int& x, int& y)
+void InputManager::GetMousePos(float& x, float& y)
 {
 	x = m_mouseX; 
 	y = m_mouseY;

@@ -6,7 +6,7 @@
 #include <fstream>
 #include <sstream>
 
-entity::entity(EntityConfig config) : Object(config.m_imageFile, config.m_spawnX, config.m_spawnY, 50, 75, true), m_type(config.m_type),m_maxHealth(config.m_maxHealth) ,
+entity::entity(EntityConfig config) : Object(config.m_imageFile, config.m_spawnX, config.m_spawnY, 50, 75, true), m_type(config.m_tag),m_maxHealth(config.m_maxHealth) ,
 m_currentHealth(config.m_maxHealth), m_currentX(config.m_spawnX), m_currentY(config.m_spawnY), m_damage(config.m_damage), m_isDead(false) , m_range(config.m_range)
 , m_spawnX(config.m_spawnX), m_spawnY(config.m_spawnY)
 {
@@ -28,10 +28,12 @@ void entity::Move()
 {
 }
 
+//returns damage amount
 float entity::GetDamage()
 {
-	return 0.0f;
+	return m_damage;
 }
+
 
 TextObject* entity::GetHealthObj()
 {
@@ -70,9 +72,9 @@ std::vector<Object*> entity::getProjectiles()
 	return m_projectiles;
 }
 
-std::vector<Object*> entity::BasicAttack()
+void entity::BasicAttack(float clickX, float clickY)
 {
-	return m_projectiles;
+	
 }
 
 //return current x pos
@@ -102,6 +104,26 @@ bool entity::GetDead()
 	return m_isDead;
 }
 
+
+void entity::ProjectileUpdate()
+{
+	//cycles through the projectile vector
+	for (int i = m_projectiles.size() - 1; i >= 0; i--)
+	{
+		//updates the projectile at index i
+		if (m_projectiles[i]->GetShouldCollide())
+		{
+			m_projectiles[i]->Update();
+		}
+		//checks if it can collide and if not delete the projectile
+		else {
+			m_projectiles.erase(m_projectiles.begin() + i);
+		}
+
+	}
+}
+
+//respawn function
 void entity::ReSpawn(int spawnX, int spawnY)
 {
 	m_currentX = m_spawnX;

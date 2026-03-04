@@ -1,6 +1,7 @@
 #include "enemy.h"
 #include "TextObject.h"
 #include "player.h"
+#include "Projectile.h"
 
 enemy::enemy(EnemyConfig eConfig) :entity(eConfig), m_speed(eConfig.m_speed), e_state(Idle), m_isDead(false) , m_range(eConfig.m_range)
 {
@@ -15,10 +16,10 @@ void enemy::Update()
 	case Idle:
 		break;
 	case Seeking:
-		Seek();
+		//Seek(FindTargetDistance(m_currentX, m_currentY, m_target->GetXPos(), m_target->GetYPos()));
 		break;
 	case Attacking:
-		//Attack(m_player);
+		//Attack(FindTargetDistance(m_currentX, m_currentY, m_target->GetXPos(), m_target->GetYPos()));
 		break;
 	case Fleeing:
 		//Flee(m_player);
@@ -29,32 +30,17 @@ void enemy::Update()
 		break;
 	}
 
+	ProjectileUpdate();
+
 	SetCriticalHealth(m_maxHealth);
 
 	setState();
 	
 	healthObj->Update();
 
-	/*if (m_currentHealth <= 0.0f)
-	{
-		ReSpawn(m_spawnX, m_spawnY);
-	}*/
-
 	entity::Update();
 }
 
-float enemy::FindTargetDistance(float XPos, float YPos, float targetXPos, float targetYPos)
-{
-	//calculating the diagonal from the enemy to the target
-	float xDifferance = XPos - targetXPos;
-	float yDifferance = YPos - targetYPos;
-
-	float diagLength = abs(sqrt(pow(xDifferance, 2) + pow(yDifferance, 2)));
-
-	
-	//return distance from taget
-	return diagLength;
-}
 
 void enemy::SetTarget(entity* target)
 {
@@ -120,11 +106,9 @@ void enemy::ReSpawn(int spawnX, int spawnY)
 	SetCurrentHealth(m_currentHealth);
 }
 
-void enemy::Seek()
+void enemy::Seek(float distanceFromTarget)
 {
-
 	bool ismoving = true;
-
 	int  XPos, Ypos;
 
 	XPos = m_target->GetXPos();
@@ -136,48 +120,61 @@ void enemy::Seek()
 
 	float speed = 2.0f;
 
-	int xdif = (XPos - m_currentX);
-	int ydif = (Ypos - m_currentY);
+	if ((distanceFromTarget) > (m_range))
+	{
+		int xdif = (XPos - m_currentX);
+		int ydif = (Ypos - m_currentY);
 
-	float vctLength = sqrt((xdif * xdif) + (ydif * ydif));
+		FindTargetDirection(FindTargetDistance(m_currentX, m_currentY, m_target->GetXPos() , m_target->GetYPos()), m_target->GetXPos() , m_target->GetYPos());
 
+		int moveAmount[2]{ direction[0] * speed , direction[1] * speed };
 
-	float direction[2]{ (xdif / vctLength) , (ydif / vctLength) };
+		if (m_currentX == XPos && m_currentY == Ypos)
+		{
+			ismoving = false;
+		}
 
-	int moveAmount[2]{ direction[0] * speed , direction[1] * speed };
+		if (ismoving)
+		{
+			m_OX = m_currentX;
+			m_OY = m_currentY;
+			m_currentX += getmove(moveAmount[0], (XPos - m_currentX));
+			m_currentY += getmove(moveAmount[1], (Ypos - m_currentY));
 
-	if (m_currentX == XPos && m_currentY == Ypos)
+			SetPosition(m_currentX, m_currentY);
+		}
+
+	}
+	else
 	{
 		ismoving = false;
 	}
 
-	if (ismoving)
-	{
-		m_OX = m_currentX;
-		m_OY = m_currentY;
-		m_currentX += getmove(moveAmount[0], (XPos - m_currentX));
-		m_currentY += getmove(moveAmount[1], (Ypos - m_currentY));
-
-		SetPosition(m_currentX, m_currentY);
-	}
-
 }
 
 
-int enemy::getmove(int move, int dist)
+
+
+void enemy::Attack(float distanceFromTarget)
 {
-	if (std::abs(move) > std::abs(dist))
+	if (std::abs(distanceFromTarget < m_range)) 
 	{
+		if (m_projectiles.size() < 4)
+		{
+			int pPosX = m_currentX;
+			int pPosY = m_currentY;
 
-		return dist;
+			//creates projectile
+			Projectile* projectile = new Projectile("Player", "assets/baguette.bmp", pPosX, pPosY);
+			projectile->SetTargetLocation(m_target->GetOldX(), m_target->GetOldY());
+			m_projectiles.push_back(projectile);
+
+		}
+			
 	}
-	return move;
+	
 }
 
-//void enemy::Attack(player* player)
-//{
-//}
-//
 //void enemy::Flee(player* player)
 //{
 //}

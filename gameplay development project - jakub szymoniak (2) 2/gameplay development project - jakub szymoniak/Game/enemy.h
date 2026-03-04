@@ -49,11 +49,11 @@ public:
 	float SetCriticalHealth(float health);
 	void ReSpawn(int spawnX, int spawnY) override;
 	//movement based functions
-	void Seek();
-	void Attack();
+	void Seek(float distanceFromTarget);
+	void Attack(float distanceFromTarget);
 	void Flee();
-	int getmove(int move, int dist);
-	float FindTargetDistance(float XPos, float YPos, float targetXPos ,float targetYPos);
+	
+	
 
 	//setters
 	void SetTarget(entity* target);

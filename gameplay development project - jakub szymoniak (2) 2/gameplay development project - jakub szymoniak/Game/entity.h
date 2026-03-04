@@ -1,12 +1,12 @@
 #pragma once
 #include <string>
 #include "Object.h"
-#include <vector>
+
 
 struct EntityConfig
 {
 	const char* m_imageFile;
-	std::string m_type, m_filepath;
+	std::string m_tag, m_filepath;
 	float m_spawnX, m_spawnY;
 	float m_maxHealth;
 	
@@ -41,6 +41,7 @@ protected:
 	bool m_isDead = false;
 
 	std::vector<Object*> m_projectiles;
+	
 
 protected:
 	std::string textData;
@@ -62,12 +63,15 @@ public:
 	virtual float SetCurrentHealth(float currenthealth);
 	virtual TextObject* GetHealthObj();
 	std::vector<Object*> getProjectiles();
-	virtual std::vector<Object*> BasicAttack();
+	virtual void BasicAttack(float clickX, float clickY);
 	float GetXPos();
 	float GetYPos();
 	float GetOldX();
 	float GetOldY();
 	bool GetDead();
+	void ProjectileUpdate();
+	//float FindTargetDistance(float XPos, float YPos, float targetXPos, float targetYPos);
+	//std::vector<float> FindTargetDirection(float vctLength, float targetXPos, float targetYPos);
 	
 	virtual void ReSpawn(int spawnX, int spawnY);
 

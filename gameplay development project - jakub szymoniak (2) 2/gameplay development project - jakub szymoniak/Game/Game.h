@@ -27,6 +27,8 @@ private:
 	float p_x, p_y;
 	float e_x, e_y;
 
+	float clickX, clickY;
+
 	
 
 protected:
@@ -46,6 +48,7 @@ public:
 	void CheckCollisions();
 	GameScreen* GetScreen();
 	void UpdatingObjectUpdate();
+	void CheckProjectileCollision(entity* ProjectileOwner);
 
 
 	//void passtime();

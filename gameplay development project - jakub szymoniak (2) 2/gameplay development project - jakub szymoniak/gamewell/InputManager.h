@@ -26,7 +26,7 @@ public:
 	bool GetMouseHeld(int buttonId);
 	bool GetMouseUp	 (int buttonId);
 
-	void GetMousePos(int& x, int& y);
+	void GetMousePos(float& x, float& y);
 
 	// Seconds
 	float GetDeltaTime();

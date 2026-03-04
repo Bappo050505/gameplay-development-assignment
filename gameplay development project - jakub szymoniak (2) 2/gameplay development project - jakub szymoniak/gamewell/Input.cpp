@@ -34,7 +34,7 @@ bool Input::GetMouseUp(int buttonId)
 	return InputManager::Get()->GetMouseUp(buttonId);
 }
 
-void Input::GetMousePos(int& x, int& y)
+void Input::GetMousePos(float& x, float& y)
 {
 	InputManager::Get()->GetMousePos(x, y);
 }

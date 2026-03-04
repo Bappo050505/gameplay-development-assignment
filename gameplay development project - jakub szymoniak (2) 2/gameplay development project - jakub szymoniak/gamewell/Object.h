@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 // A basic object with simple 2D box collision. 
 // There are two constructors - one for a static image (no animation) and one for a dynamic one. 
@@ -9,7 +10,7 @@ class Object
 public:
 	// Constructor for Static Image
 	// filepath - Image to load. Relative to the .exe location (or main location when debugging in visual studio)
-	// x and y - Coordinates to draw at, range is from 0 to window width (x) or window height (y)
+	// x and y - Coordinates to draw at, range is from 0 to window width (x) or window height (y) 
 	// width and height - the size in pixels to draw the image over
 	// shouldDraw - Whether or not to render the Object
 	Object(const char* filepath, int x, int y, int width, int height, bool shoulddraw);
@@ -33,7 +34,7 @@ public:
 	// Destructor
 	~Object();
 
-	
+	int getmove(int move, int dist);
 
 	// Init for Static Image
 	// filepath - Image to load. Relative to the .exe location (or main location when debugging in visual studio)
@@ -84,14 +85,23 @@ public:
 
 	/// Check to see if this object is colliding with the object passed in
 	virtual bool IsOverlapping(const Object& other);
+
+	float FindTargetDistance(float XPos, float YPos, float targetXPos, float targetYPos);
+	std::vector<float> FindTargetDirection(float vctLength, float targetXPos, float targetYPos);
+
+	
 protected:
 
 	/// Protected Default Constructor for use internally
 	Object(int x, int y, bool shouldDraw);
 
 	ImageID* m_imageIDs;
+	std::vector<float> direction;
 
 private:
+
+	
+
 	int m_x, m_y, m_w, m_h;
 	bool m_shouldDraw, m_shouldCollide , m_deletable;
 

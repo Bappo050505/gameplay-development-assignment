@@ -186,3 +186,41 @@ bool Object::IsOverlapping(const Object& other)
 }
 
 
+
+int Object::getmove(int move, int dist)
+{
+	if (std::abs(move) > std::abs(dist))
+	{
+
+		return dist;
+	}
+	return move;
+}
+
+float Object::FindTargetDistance(float XPos, float YPos, float targetXPos, float targetYPos)
+{
+	//calculating the diagonal from the target to the target
+	float xdif = XPos - targetXPos;
+	float ydif = YPos - targetYPos;
+
+
+	float diagLength = abs(sqrt(pow(xdif, 2) + pow(ydif, 2)));
+
+	//return distance from taget
+	return diagLength;
+}
+
+std::vector<float> Object::FindTargetDirection(float vctLength, float targetXPos, float targetYPos)
+{
+	//calculating the diagonal length from target to target
+	float xdif = (targetXPos - m_x);
+	float ydif = (targetYPos - m_y);
+	float diagLength = abs(sqrt(pow(xdif, 2) + pow(ydif, 2)));
+
+	//calculates the direction of the target
+	direction = { (xdif / diagLength), (ydif / diagLength) };
+
+	return direction;
+}
+
+
