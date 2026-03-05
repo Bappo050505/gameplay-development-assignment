@@ -51,7 +51,7 @@ public:
 	//movement based functions
 	void Seek(float distanceFromTarget);
 	void Attack(float distanceFromTarget);
-	void Flee();
+	//void Flee(player* player);
 	
 	
 

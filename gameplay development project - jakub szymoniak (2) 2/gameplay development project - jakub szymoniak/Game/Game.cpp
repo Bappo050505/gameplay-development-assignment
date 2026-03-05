@@ -3,6 +3,7 @@
 #include "player.h"
 #include "tower.h"
 #include "Projectile.h"
+#include "TextObject.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -10,7 +11,7 @@
 
 
 
-Game::Game()
+Game::Game() : score(0)
 {
 	int r = 0, g = 0, b = 0;
 
@@ -26,6 +27,8 @@ Game::Game()
 
 void Game::initialize()
 {
+	
+	
 	m_InputManager = new Input;
 	ReadFile();
 
@@ -123,27 +126,30 @@ bool Game::IsRunning()
 void Game::Update() 
 {
 	
-	if (m_InputManager->GetMouseDown(LEFTMOUSEBUTTON))
-	{
-		m_InputManager->GetMousePos(clickX, clickY);
+		score++;
+		if (m_InputManager->GetMouseDown(LEFTMOUSEBUTTON))
+		{
+			m_InputManager->GetMousePos(clickX, clickY);
 
-		m_entities[m_playerIDX]->BasicAttack(clickX, clickY);
-	}
+			m_entities[m_playerIDX]->BasicAttack(clickX, clickY);
+		}
 
-	CheckCollisions();
-	//m_entities[m_playerIDX]->Move();
+		CheckCollisions();
+		m_entities[m_playerIDX]->Move();
 
-	UpdatingObjectUpdate();
+		UpdatingObjectUpdate();
 
-	if (m_InputManager->GetKeyDown('#'))
-	{
-		stop();
-	}
-	else 
-	{
-		Render();
-	}
 	
+
+		if (m_InputManager->GetKeyDown('#'))
+		{
+			stop();
+		}
+		else 
+		{
+			Render();
+		}
+
 }
 
 
@@ -207,6 +213,21 @@ GameScreen* Game::GetScreen()
 //updates objects that will have values changed, mainly for text objects.
 void Game::UpdatingObjectUpdate()
 {
+
+	Colour white;
+	white.r = 255;
+	white.g = 255;
+	white.b = 255;
+
+	std::string ScoreToText = std::to_string(getScore());
+	m_scoreCounter = new TextObject(ScoreToText.c_str(), "assets/default.ttf", 30, 10, 100, white, true);
+	m_scoreCounter->Update();
+
+	m_MovePrompt = new TextObject("Right mb to move, Left mb to shoot", "assets/default.ttf", 30, 10, 50, white, true); 
+	m_MovePrompt->Update();
+
+	m_ExitPrompt = new TextObject("Press # to Exit", "assets/default.ttf", 30, 1000, 50, white, true);
+	m_ExitPrompt->Update();
 	//"magic" numbers to offset the health objectr so its not blocked by the entity
 	m_entities[m_playerIDX]->GetPosition(p_x, p_y);
 	m_entities[m_playerIDX]->GetHealthObj()->SetPosition(p_x, p_y  -20);
@@ -236,6 +257,13 @@ void Game::CheckProjectileCollision(entity* ProjectileOwner)
 	}
 }
 
+int Game::getScore()
+{
+	//returns current score
+	return score;
+
+}
+
 
 
 void Game::stop()
@@ -243,4 +271,5 @@ void Game::stop()
 	gameS->CloseScreen();
 
 }
+
 

@@ -16,10 +16,10 @@ void enemy::Update()
 	case Idle:
 		break;
 	case Seeking:
-		//Seek(FindTargetDistance(m_currentX, m_currentY, m_target->GetXPos(), m_target->GetYPos()));
+		Seek(FindTargetDistance(m_currentX, m_currentY, m_target->GetXPos(), m_target->GetYPos()));
 		break;
 	case Attacking:
-		//Attack(FindTargetDistance(m_currentX, m_currentY, m_target->GetXPos(), m_target->GetYPos()));
+		Attack(FindTargetDistance(m_currentX, m_currentY, m_target->GetXPos(), m_target->GetYPos()));
 		break;
 	case Fleeing:
 		//Flee(m_player);
@@ -41,7 +41,7 @@ void enemy::Update()
 	entity::Update();
 }
 
-
+//sets the target the enemy will be attacking
 void enemy::SetTarget(entity* target)
 {
 	m_target = target;
@@ -93,7 +93,7 @@ float enemy::SetCriticalHealth(float health)
 	m_criticalHealth = health *0.2f;
 	return m_criticalHealth;
 }
-
+//respawn overload
 void enemy::ReSpawn(int spawnX, int spawnY)
 {
 	m_currentX = m_spawnX;
@@ -105,7 +105,7 @@ void enemy::ReSpawn(int spawnX, int spawnY)
 
 	SetCurrentHealth(m_currentHealth);
 }
-
+//1st state for the enemy, will move towards the target when out of attacking range
 void enemy::Seek(float distanceFromTarget)
 {
 	bool ismoving = true;
@@ -154,7 +154,7 @@ void enemy::Seek(float distanceFromTarget)
 
 
 
-
+//2nd enemy state, attacks when in range
 void enemy::Attack(float distanceFromTarget)
 {
 	if (std::abs(distanceFromTarget < m_range)) 
@@ -174,9 +174,8 @@ void enemy::Attack(float distanceFromTarget)
 	}
 	
 }
-
+//3rd state not implemented
 //void enemy::Flee(player* player)
-//{
 //}
 
 

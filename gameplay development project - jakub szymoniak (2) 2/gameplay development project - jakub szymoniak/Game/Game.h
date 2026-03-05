@@ -21,8 +21,7 @@ private:
 	
 	
 	float m_deltatime = 1.0f;
-	bool isdead = false;
-	double score = 0;
+	double score;
 	
 	float p_x, p_y;
 	float e_x, e_y;
@@ -30,10 +29,17 @@ private:
 	float clickX, clickY;
 
 	
+	TextObject* m_scoreCounter;
+	TextObject* m_MovePrompt;
+	TextObject* m_ExitPrompt;
+
+	
 
 protected:
 	
 public:
+
+	
 	
 	Game();
 	void initialize();
@@ -49,6 +55,9 @@ public:
 	GameScreen* GetScreen();
 	void UpdatingObjectUpdate();
 	void CheckProjectileCollision(entity* ProjectileOwner);
+	void GameOver();
+
+	int getScore();
 
 
 	//void passtime();
