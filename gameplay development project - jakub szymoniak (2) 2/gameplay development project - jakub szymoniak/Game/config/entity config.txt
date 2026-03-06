@@ -1,6 +1,0 @@
-player assets/FatAssTetoPlush.bmp 1 300 360 100 2 10 100 2 5 30 10
-enemy assets/mambo.bmp 1 1000 360 100 1 10 4 300 10
-tower assets/tower.bmp 0 360 0 20 50 5
-tower assets/tower.bmp 1230 360 100 20 50 5
-
-type tag imageFile level spawnx spawny health healthRegen dmg mana manaRegen speed range cooldown

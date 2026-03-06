@@ -1,0 +1,36 @@
+﻿  GameScreen.cpp
+  IDSystem.cpp
+  Input.cpp
+  InputManager.cpp
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\InputManager.h(6,9): warning C4005: 'KEY': macro redefinition
+  (compiling source file 'Input.cpp')
+      C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\Input.h(2,9):
+      see previous definition of 'KEY'
+  
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\InputManager.cpp(28,96): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\InputManager.cpp(28,96): warning C4244:         with
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\InputManager.cpp(28,96): warning C4244:         [
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\InputManager.cpp(28,96): warning C4244:             _Rep=__int64
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\InputManager.cpp(28,96): warning C4244:         ]
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\InputManager.cpp(151,9): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\InputManager.cpp(156,140): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Object.cpp
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\Object.cpp(114,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\Object.cpp(115,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\Object.cpp(158,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\Object.cpp(158,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\Object.cpp(158,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\Object.cpp(158,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Renderer.cpp
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\Renderer.cpp(33,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\Renderer.cpp(178,27): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  SDLSoundSystem.cpp
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\SDLSoundSystem.cpp(54,31): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\SDLSoundSystem.cpp(66,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Sound.cpp
+  TextObject.cpp
+  Generating Code...
+C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\gamewell\SDLSoundSystem.cpp(70,1): warning C4715: 'SDLSoundSystem::LoadSFX': not all control paths return a value
+SDL2_ttf.lib(SDL2_ttf.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2_Mixer.lib(SDL2_mixer.dll); second definition ignored
+SDL2.lib(SDL2.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2_Mixer.lib(SDL2_mixer.dll); second definition ignored
+  gamewell.vcxproj -> C:\Users\jakub\Downloads\gameplay development project - jakub szymoniak\gameplay development project - jakub szymoniak\x64\Debug\gamewell.lib
