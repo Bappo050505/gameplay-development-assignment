@@ -264,8 +264,6 @@ int Game::getScore()
 
 }
 
-
-
 void Game::stop()
 {
 	gameS->CloseScreen();
